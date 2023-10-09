@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+        crossorigin="anonymous">
+</head>
+<body>
+    <section>
+        <div class="imgBx">
+            <img src="img/pic.jpeg" alt="broken">
+        </div>
+        <div class="contentBx">
+            <div class="formBx">
+                <h2>Signup</h2>
+                <%- include('./partials/flash') %>
+                <form action="/signup" method="POST">
+                    <div class="inputBx">
+                        <span>Name</span>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="inputBx">
+                        <span>Email</span>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="inputBx">
+                        <span>Username</span>
+                        <input type="text" name="username" required>
+                    </div>
+                    <div class="inputBx">
+                        <span>Password</span>
+                        <input type="password" name="password" required>
+                    </div>
+                    <div class="inputBx">
+                        <span>Role</span>
+                        <select name="role" id="signupRole" onchange="showAccessKey()">
+                            <option value="student">Student</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="tnp">TnP</option>
+                          </select>
+                    </div>
+                    <div class="inputBx" id="accessDiv" style="display: none;">
+                        <span>Access Key</span>
+                        <input type="password" name="accesskey">
+                    </div>
+                    <div class="inputBx">
+                        <button type="submit">Sign Up</button>
+                    </div>
+                    <div class="inputBx">
+                        <p>Already have an account? <a href="/login">Log In</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript">
+        const buttons=document.querySelectorAll(button);
+        buttons.forEach(btn => {
+            btn.addEventListener('click',function(ee){
+                let x=ee.clientX-ee.target.offsetLeft;
+                let y=ee.clientY-ee.target.offsetTop;
+                
+                let ripples = document.createElement('button');
+                ripples.style.left=x+'px';
+                ripples.style.top=y+'px';
+                this.appendChild(ripples);
+            })
+        })
+    </script>
+</body>
+</html>
